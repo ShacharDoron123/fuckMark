@@ -60,11 +60,6 @@
       font-size: 16px;
     }
 
-    .details h2 {
-      margin: 0;
-      font-size: 16px;
-    }
-
     .status {
       background-color: #028851;
       color: white;
@@ -207,15 +202,16 @@
     document.addEventListener("DOMContentLoaded", function () {
       const CLASS = "3";
 
+      const clockInput = document.getElementById('clock-input');
+      const clockSubmit = document.getElementById('clock-submit');
       const clockContainer = document.getElementById('clock-container');
       const formContainer = document.getElementById('form-container');
       const mainContent = document.getElementById('main-content');
-      const clockInput = document.getElementById('clock-input');
-      const clockSubmit = document.getElementById('clock-submit');
       const errorMsg = document.getElementById('error-msg');
 
-      clockSubmit.addEventListener('click', function () {
+      function checkPassword() {
         const enteredCode = clockInput.value.trim();
+        console.log("Entered code:", enteredCode);
         if (enteredCode === CLASS) {
           clockContainer.style.display = 'none';
           formContainer.style.display = 'block';
@@ -226,17 +222,18 @@
           clockInput.value = '';
           clockInput.focus();
         }
-      });
+      }
 
-      clockInput.addEventListener('keydown', function (e) {
+      clockSubmit.addEventListener('click', checkPassword);
+
+      clockInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
           e.preventDefault();
-          clockSubmit.click();
+          checkPassword();
         }
       });
 
-      const form = document.getElementById('student-form');
-      form.addEventListener('submit', function (e) {
+      document.getElementById('student-form').addEventListener('submit', function (e) {
         e.preventDefault();
 
         const name = document.getElementById('student-name').value.trim();
@@ -250,7 +247,6 @@
           const hour = String(now.getHours()).padStart(2, '0');
           const minutes = String(now.getMinutes()).padStart(2, '0');
 
-          // חישוב שעת חזרה (שעת יציאה + שעה)
           const returnTime = new Date(now.getTime() + 60 * 60 * 1000);
           const returnHour = String(returnTime.getHours()).padStart(2, '0');
           const returnMinutes = String(returnTime.getMinutes()).padStart(2, '0');
@@ -268,6 +264,5 @@
       });
     });
   </script>
-
 </body>
 </html>
