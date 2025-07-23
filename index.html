@@ -1,292 +1,266 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>אישור יציאה</title>
-  <style>
-    body {
-      background-color: #2844a4;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #333;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exit Approval</title>
+    <style>
+        body {
+            background-color: #2844a4;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
 
-    .approval-container {
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 30px;
-      background-color: #dde4f7;
-      border-radius: 25px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      width: 90%;
-      box-sizing: border-box;
-    }
+        .approval-container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #dde4f7; 
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            box-sizing: border-box;
+        }
 
-    .content {
-      width: 100%;
-      margin: 0 auto;
-      padding: 10px 15px;
-      box-sizing: border-box;
-      direction: rtl;
-      text-align: right;
-    }
+        .content {
+            width: 100%;
+            margin: 0 auto;
+            padding: 10px 15px;
+            box-sizing: border-box;
+        }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
 
-    .header .language {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        .header .language {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .header .language img {
-      height: 30px;
-    }
+        .header .language img {
+            height: 30px;
+        }
 
-    .header h2 {
-      font-size: 18px;
-      margin: 0;
-    }
+        .header h2 {
+            font-size: 18px;
+            margin: 0;
+        }
 
-    .details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 20px;
-    margin: 10px 0;
-    font-size: 16px;
-}
+        /* תמיד שתי עמודות */
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 20px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
 
-.details .label {
-    text-align: right;
-    font-weight: bold;
-}
+        .details h2 {
+            margin: 0;
+            font-size: 16px;
+        }
 
-.details .value {
-    text-align: left;
-}
-    .details h2 {
-      margin: 0;
-      font-size: 16px;
-    }
+        .status {
+            background-color: #028851;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: inline-block;
+        }
 
-    .status {
-      background-color: #028851;
-      color: white;
-      padding: 5px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      display: inline-block;
-    }
+        .cta {
+            text-align: center;
+            margin: 25px 0;
+        }
 
-    .cta {
-      text-align: center;
-      margin: 25px 0;
-    }
+        .cta button {
+            background: linear-gradient(90deg, #01dbdd, #193ea7);
+            color: white;
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 320px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-    .cta button {
-      background: linear-gradient(90deg, #01dbdd, #193ea7);
-      color: white;
-      font-size: 18px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 320px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+        .approval {
+            text-align: center;
+            margin-top: 25px;
+        }
 
-    .approval {
-      text-align: center;
-      margin-top: 25px;
-    }
+        .approval img {
+            max-width: 100%;
+            width: 120px;
+            height: auto;
+            margin: 10px 0;
+        }
 
-    .approval img {
-      max-width: 100%;
-      width: 120px;
-      height: auto;
-      margin: 10px 0;
-    }
+        .approval h2 {
+            font-size: 16px;
+            margin-top: 10px;
+        }
 
-    .approval h2 {
-      font-size: 16px;
-      margin-top: 10px;
-    }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            max-width: 400px;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
 
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      max-width: 400px;
-      font-size: 16px;
-      padding: 10px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
-    }
+        @media (max-width: 500px) {
+            .details {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 12px;
+            }
 
-    @media (max-width: 500px) {
-      .cta button {
-        font-size: 16px;
-        padding: 10px;
-      }
+            .cta button {
+                font-size: 16px;
+                padding: 10px;
+            }
 
-      .approval-container {
-        padding: 20px;
-      }
-    }
-  </style>
+            .approval-container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div id="clock-container" class="approval-container" style="max-width: 400px; text-align: center;">
-  <div class="content">
-    <h1>הכנס קוד כדי להמשיך</h1>
-    <input type="password" id="clock-input" placeholder="קוד">
-    <div class="cta">
-      <button id="clock-submit">המשך</button>
-    </div>
-    <p id="error-msg" style="color: red; display: none;">קוד שגוי, נסה שוב.</p>
-  </div>
-</div>
-
-<div id="form-container" class="approval-container" style="display: none;">
-  <div class="content">
-    <h1 style="text-align: center;">הכנס פרטי תלמיד</h1>
-    <form id="student-form">
-      <div class="details">
-        <div>
-          <label for="student-name">שם התלמיד:</label>
-          <input type="text" id="student-name" required>
+    <div id="clock-container" class="approval-container" style="max-width: 400px; text-align: center;">
+        <div class="content">
+            <h1>הכנס קוד כדי להמשיך</h1>
+            <input type="password" id="clock-input" placeholder="קוד" style="font-size: 18px; padding: 8px; width: 80%; border-radius: 6px; border: 1px solid #ccc;">
+            <div class="cta" style="margin-top: 20px;">
+                <button id="clock-submit" style="width: 100%; max-width: 200px;">המשך</button>
+            </div>
+            <p id="error-msg" style="color: red; display: none;">קוד שגוי, נסה שוב.</p>
         </div>
-        <div>
-          <label for="student-class">כיתה:</label>
-          <input type="text" id="student-class" required>
+    </div>
+
+    <div id="form-container" class="approval-container" style="display: none;">
+        <div class="content">
+            <h1 style="text-align: center;">הכנס פרטי תלמיד</h1>
+            <form id="student-form">
+                <div class="details">
+                    <label for="student-name"><h2>שם התלמיד:</h2></label>
+                    <input type="text" id="student-name" required>
+                </div>
+                <div class="details">
+                    <label for="student-class"><h2>כיתה:</h2></label>
+                    <input type="text" id="student-class" required>
+                </div>
+                <div class="cta">
+                    <button type="submit">המשך</button>
+                </div>
+            </form>
         </div>
-      </div>
-      <div class="cta">
-        <button type="submit">המשך</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div id="main-content" class="approval-container" style="display: none;">
-  <div class="content">
-    <div class="header">
-      <div class="language">
-        <img src="images/flag-CzlMZVOS.jpng" alt="שפה">
-        <h2>שפה:</h2>
-      </div>
-      <img width="40" height="40" src="images/home-Dzx5QTpF.jpng" alt="בית">
     </div>
 
-    <h1 style="text-align: center;">הדפסת אישור יציאה</h1>
+    <div id="main-content" class="approval-container" style="display: none;">
+        <div class="content">
+            <div class="header">
+                <div class="language">
+                    <img src="images/flag-CzlMZVOS.jpg" alt="Language">
+                    <h2>:שפה</h2>
+                </div>
+                <img width="40" height="40" src="images/home-Dzx5QTpF.png" alt="Home">
+            </div>
+            <h1 style="text-align: center;">הדפסת אישור יציאה</h1>
 
-   <div class="details">
-    <div class="label">שעת השחרור:</div>
-    <div class="value" id="release-time">00:00</div>
+            <div class="details">
+                <h2 id="release-time">שעת השחרור:</h2>
+                <h2 id="current-date">תאריך:</h2>
+                <h2 id="student-class-display">כיתה:</h2>
+                <h2 id="student-name-display">שם התלמיד:</h2>
+                <h2><span class="status">אושר</span>:סטטוס</h2>
+                <h2>סיבה: חלון</h2>
+                <h2>מחזוריות: חד פעמי</h2>
+                <h2>שעת חזרה: 00:00</h2>
+                <h2>שעת יציאה: 00:00</h2>
+            </div>
 
-    <div class="label">תאריך:</div>
-    <div class="value" id="current-date">--/--/--</div>
+            <div class="cta">
+                <button>עדכון יציאה מבית הספר‎</button>
+            </div>
 
-    <div class="label">כיתה:</div>
-    <div class="value" id="student-class-display">---</div>
-
-    <div class="label">שם התלמיד:</div>
-    <div class="value" id="student-name-display">---</div>
-
-    <div class="label">סטטוס:</div>
-    <div class="value"><span class="status">אושר</span></div>
-
-    <div class="label">סיבה:</div>
-    <div class="value">חלון</div>
-
-    <div class="label">מחזוריות:</div>
-    <div class="value">חד פעמי</div>
-
-    <div class="label">שעת חזרה:</div>
-    <div class="value">00:00</div>
-
-    <div class="label">שעת יציאה:</div>
-    <div class="value">00:00</div>
-</div>
-
-
-    <div class="cta">
-      <button>עדכון יציאה מבית הספר</button>
+            <div class="approval">
+                <img src="images/checkmark-rZ6HcBdl.png" alt="Approved">
+                <h2>אושר על ידי: מחנכת כיתה</h2>
+            </div>
+        </div>
     </div>
 
-    <div class="approval">
-      <img src="images/checkmark-rZ6HcBdl.jpng" alt="אושר">
-      <h2>אושר על ידי: מחנכת כיתה</h2>
-    </div>
-  </div>
-</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const CLASS = "3";
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const CLASS = "3";
+            const clockContainer = document.getElementById('clock-container');
+            const formContainer = document.getElementById('form-container');
+            const mainContent = document.getElementById('main-content');
+            const clockInput = document.getElementById('clock-input');
+            const clockSubmit = document.getElementById('clock-submit');
+            const errorMsg = document.getElementById('error-msg');
 
-    const clockContainer = document.getElementById('clock-container');
-    const formContainer = document.getElementById('form-container');
-    const mainContent = document.getElementById('main-content');
-    const clockInput = document.getElementById('clock-input');
-    const clockSubmit = document.getElementById('clock-submit');
-    const errorMsg = document.getElementById('error-msg');
+            clockSubmit.addEventListener('click', function () {
+                const enteredCode = clockInput.value.trim();
+                if (enteredCode === CLASS) {
+                    clockContainer.style.display = 'none';
+                    formContainer.style.display = 'block';
+                    errorMsg.style.display = 'none';
+                    clockInput.value = '';
+                } else {
+                    errorMsg.style.display = 'block';
+                    clockInput.value = '';
+                    clockInput.focus();
+                }
+            });
 
-    clockSubmit.addEventListener('click', function () {
-      const enteredCode = clockInput.value.trim();
-      if (enteredCode === CLASS) {
-        clockContainer.style.display = 'none';
-        formContainer.style.display = 'block';
-        errorMsg.style.display = 'none';
-        clockInput.value = '';
-      } else {
-        errorMsg.style.display = 'block';
-        clockInput.value = '';
-        clockInput.focus();
-      }
-    });
+            clockInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    clockSubmit.click();
+                }
+            });
 
-    clockInput.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        clockSubmit.click();
-      }
-    });
+            const form = document.getElementById('student-form');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
 
-    const form = document.getElementById('student-form');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+                const name = document.getElementById('student-name').value.trim();
+                const className = document.getElementById('student-class').value.trim();
 
-      const name = document.getElementById('student-name').value.trim();
-      const className = document.getElementById('student-class').value.trim();
+                if (name && className) {
+                    const now = new Date();
+                    const year = now.getFullYear().toString().slice(2);
+                    const month = String(now.getMonth() + 1).padStart(2, '0');
+                    const day = String(now.getDate()).padStart(2, '0');
+                    const hour = String(now.getHours()).padStart(2, '0');
+                    const minutes = String(now.getMinutes()).padStart(2, '0');
 
-      if (name && className) {
-        const now = new Date();
-        const year = now.getFullYear().toString().slice(2);
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hour = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
+                    document.getElementById('student-name-display').textContent = `שם התלמיד: ${name}`;
+                    document.getElementById('student-class-display').textContent = `כיתה: ${className}`;
+                    document.getElementById('current-date').textContent = `תאריך: ${day}/${month}/${year}`;
+                    document.getElementById('release-time').textContent = `שעת השחרור: ${hour}:${minutes}`;
 
-        document.getElementById('student-name-display').textContent = `שם התלמיד: ${name}`;
-        document.getElementById('student-class-display').textContent = `כיתה: ${className}`;
-        document.getElementById('current-date').textContent = `תאריך: ${day}/${month}/${year}`;
-        document.getElementById('release-time').textContent = `שעת השחרור: ${hour}:${minutes}`;
-
-        formContainer.style.display = 'none';
-        mainContent.style.display = 'block';
-      }
-    });
-  });
-</script>
-
+                    formContainer.style.display = 'none';
+                    mainContent.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
