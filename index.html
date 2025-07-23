@@ -14,134 +14,133 @@
 }
 
 .approval-container {
-    max-width: 700px;
-    margin: 50px auto;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #dde4f7; /* כחול בהיר */
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     width: 90%;
 }
 
 .content {
     width: 100%;
     margin: 0 auto;
-    border-radius: 20px;
-    padding: 20px;
+    padding: 10px 15px;
     box-sizing: border-box;
 }
 
 .header {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .header .language {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .header .language img {
     height: 30px;
-    margin-left: -20px;
 }
 
 .header h2 {
+    font-size: 18px;
     margin: 0;
-    font-size: 20px;
 }
 
 .details {
-    font-size: 18px;
-    margin: 15px 0;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    font-size: 16px;
+}
+
+.details h2 {
+    font-size: 16px;
+    margin: 5px 0;
 }
 
 .status {
-    display: inline-block;
-    padding: 10px 15px;
     background-color: #028851;
-    color: #fff;
+    color: white;
+    padding: 5px 12px;
     border-radius: 8px;
-    font-size: 18px;
-    text-align: center;
+    font-size: 14px;
+    display: inline-block;
 }
 
 .cta {
-    margin: 30px auto;
-    width: 100%;
     text-align: center;
+    margin: 25px 0;
 }
 
 .cta button {
     background: linear-gradient(90deg, #01dbdd, #193ea7);
     color: white;
     font-size: 18px;
-    font-weight: bold;
+    padding: 12px 25px;
     border: none;
     border-radius: 10px;
-    padding: 15px 20px;
+    width: 100%;
+    max-width: 320px;
     cursor: pointer;
-    width: 90%;
-    max-width: 500px;
+    font-weight: bold;
 }
 
 .approval {
     text-align: center;
-    font-size: 20px;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .approval img {
     max-width: 100%;
-    margin: 15px auto;
+    width: 120px;
+    height: auto;
+    margin: 10px 0;
 }
 
+.approval h2 {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* קלטים */
 input[type="text"], input[type="password"] {
-    font-size: 18px;
-    padding: 10px;
     width: 100%;
     max-width: 400px;
-    box-sizing: border-box;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
+    box-sizing: border-box;
 }
 
-/* רספונסיביות למובייל */
-@media (max-width: 600px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .header .language img {
-        height: 25px;
-        margin-left: 0;
-    }
-
+/* רספונסיביות */
+@media (max-width: 500px) {
     .details {
         flex-direction: column;
-        gap: 10px;
+    }
+
+    .details h2 {
+        font-size: 15px;
     }
 
     .cta button {
-        width: 100%;
-    }
-
-    input[type="text"], input[type="password"] {
-        width: 100%;
+        font-size: 16px;
+        padding: 10px;
     }
 
     .approval-container {
-        margin: 20px auto;
         padding: 15px;
     }
 }
+
 
     </style>
 </head>
