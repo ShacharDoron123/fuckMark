@@ -204,71 +204,71 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const CLASS = "3";
+document.addEventListener("DOMContentLoaded", function () {
+  const CLASS = "3";
 
-      const clockContainer = document.getElementById('clock-container');
-      const formContainer = document.getElementById('form-container');
-      const mainContent = document.getElementById('main-content');
-      const clockInput = document.getElementById('clock-input');
-      const clockSubmit = document.getElementById('clock-submit');
-      const errorMsg = document.getElementById('error-msg');
+  const clockContainer = document.getElementById('clock-container');
+  const formContainer = document.getElementById('form-container');
+  const mainContent = document.getElementById('main-content');
+  const clockInput = document.getElementById('clock-input');
+  const clockSubmit = document.getElementById('clock-submit');
+  const errorMsg = document.getElementById('error-msg');
 
-      clockSubmit.addEventListener('click', function () {
-        const enteredCode = clockInput.value.trim();
-        if (enteredCode === CLASS) {
-          clockContainer.style.display = 'none';
-          formContainer.style.display = 'block';
-          errorMsg.style.display = 'none';
-          clockInput.value = '';
-        } else {
-          errorMsg.style.display = 'block';
-          clockInput.value = '';
-          clockInput.focus();
-        }
-      });
+  clockSubmit.addEventListener('click', function () {
+    const enteredCode = clockInput.value.trim();
+    if (enteredCode === CLASS) {
+      clockContainer.style.display = 'none';
+      formContainer.style.display = 'block';
+      errorMsg.style.display = 'none';
+      clockInput.value = '';
+    } else {
+      errorMsg.style.display = 'block';
+      clockInput.value = '';
+      clockInput.focus();
+    }
+  });
 
-      clockInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          clockSubmit.click();
-        }
-      });
+  clockInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      clockSubmit.click();
+    }
+  });
 
-      const form = document.getElementById('student-form');
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+  const form = document.getElementById('student-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-        const name = document.getElementById('student-name').value.trim();
-        const className = document.getElementById('student-class').value.trim();
+    const name = document.getElementById('student-name').value.trim();
+    const className = document.getElementById('student-class').value.trim();
 
-        if (name && className) {
-          const now = new Date();
-const year = now.getFullYear().toString().slice(2);
-const month = String(now.getMonth() + 1).padStart(2, '0');
-const day = String(now.getDate()).padStart(2, '0');
-const hour = String(now.getHours()).padStart(2, '0');
-const minutes = String(now.getMinutes()).padStart(2, '0');
+    if (name && className) {
+      const now = new Date();
+      const year = now.getFullYear().toString().slice(2);
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const hour = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
 
-// חישוב שעת חזרה (שעת יציאה + שעה)
-const returnTime = new Date(now.getTime() + 60 * 60 * 1000);
-const returnHour = String(returnTime.getHours()).padStart(2, '0');
-const returnMinutes = String(returnTime.getMinutes()).padStart(2, '0');
+      // חישוב שעת חזרה (שעת יציאה + שעה)
+      const returnTime = new Date(now.getTime() + 60 * 60 * 1000);
+      const returnHour = String(returnTime.getHours()).padStart(2, '0');
+      const returnMinutes = String(returnTime.getMinutes()).padStart(2, '0');
 
-document.getElementById('student-name-display').textContent = שם התלמיד: ${name};
-document.getElementById('student-class-display').textContent = כיתה: ${className};
-document.getElementById('current-date').textContent = תאריך: ${day}/${month}/${year};
-document.getElementById('release-time').textContent = שעת השחרור: ${hour}:${minutes};
-document.getElementById('exit-time').textContent = שעת יציאה: ${hour}:${minutes};
-document.getElementById('return-time').textContent = שעת חזרה: ${returnHour}:${returnMinutes};
+      document.getElementById('student-name-display').textContent = `שם התלמיד: ${name}`;
+      document.getElementById('student-class-display').textContent = `כיתה: ${className}`;
+      document.getElementById('current-date').textContent = `תאריך: ${day}/${month}/${year}`;
+      document.getElementById('release-time').textContent = `שעת השחרור: ${hour}:${minutes}`;
+      document.getElementById('exit-time').textContent = `שעת יציאה: ${hour}:${minutes}`;
+      document.getElementById('return-time').textContent = `שעת חזרה: ${returnHour}:${returnMinutes}`;
 
+      formContainer.style.display = 'none';
+      mainContent.style.display = 'block';
+    }
+  });
+});
+</script>
 
-          formContainer.style.display = 'none';
-          mainContent.style.display = 'block';
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
