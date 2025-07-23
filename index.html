@@ -52,13 +52,14 @@
             margin: 0;
         }
 
-        .details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px 30px;
-            margin: 10px 0;
-            font-size: 16px;
-        }
+.details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px 30px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
 
         .details h2 {
             font-size: 16px;
