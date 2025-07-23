@@ -6,109 +6,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exit Approval</title>
     <style>
-        body {
-            background-color: #2844a4;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
+       body {
+    background-color: #2844a4;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
 
-        .approval-container {
-            max-width: 700px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+.approval-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 90%;
+}
 
-        .content {
-            width: 100%;
-            margin: 0 auto;
-            border-radius: 20px;
-            padding: 30px 30px 30px 30px;
-            padding-right: 50px;
-        }
+.content {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            gap: 0;
-        }
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
 
-            .header .language {
-                display: flex;
-                align-items: center;
-            }
+.header .language {
+    display: flex;
+    align-items: center;
+}
 
-                .header .language img {
-                    height: 40px;
-                    margin-left: -50px;
-                }
+.header .language img {
+    height: 30px;
+    margin-left: -20px;
+}
 
-            .header h2 {
-                margin: 0;
-                font-size: 24px;
-                font-weight: bold;
-            }
+.header h2 {
+    margin: 0;
+    font-size: 20px;
+}
 
-        .details {
-            font-size: 20px;
-            margin: 15px 0;
-            display: flex;
-            justify-content: space-between;
-            padding-right: 20px;
-        }
+.details {
+    font-size: 18px;
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-        .status {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #028851;
-            color: #fff;
-            border-radius: 8px;
-            font-size: 18px;
-            text-align: center;
-        }
+.status {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #028851;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+}
 
-        .cta {
-            margin: 30px auto;
-            width: 100%;
-            text-align: center;
-        }
+.cta {
+    margin: 30px auto;
+    width: 100%;
+    text-align: center;
+}
 
-            .cta button {
-                background: linear-gradient(90deg, #01dbdd, #193ea7);
-                color: white;
-                text-align: center;
-                font-size: 20px;
-                font-weight: bold;
-                border: none;
-                border-radius: 10px;
-                padding: 15px 30px;
-                cursor: pointer;
-                width: 500px;
-            }
+.cta button {
+    background: linear-gradient(90deg, #01dbdd, #193ea7);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    cursor: pointer;
+    width: 90%;
+    max-width: 500px;
+}
 
-        .approval {
-            text-align: center;
-            font-size: 20px;
-            margin-top: 30px;
-        }
+.approval {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+}
 
-            .approval img {
-                max-width: 900px;
-                margin: 15px auto;
-            }
+.approval img {
+    max-width: 100%;
+    margin: 15px auto;
+}
 
-        input[type="text"], input[type="password"] {
-            font-size: 18px;
-            padding: 8px;
-            width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
+input[type="text"], input[type="password"] {
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* רספונסיביות למובייל */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header .language img {
+        height: 25px;
+        margin-left: 0;
+    }
+
+    .details {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cta button {
+        width: 100%;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+    }
+
+    .approval-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+}
+
     </style>
 </head>
 <body>
