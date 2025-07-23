@@ -244,24 +244,23 @@
 
         if (name && className) {
           const now = new Date();
-const year = now.getFullYear().toString().slice(2);
-const month = String(now.getMonth() + 1).padStart(2, '0');
-const day = String(now.getDate()).padStart(2, '0');
-const hour = String(now.getHours()).padStart(2, '0');
-const minutes = String(now.getMinutes()).padStart(2, '0');
+          const year = now.getFullYear().toString().slice(2);
+          const month = String(now.getMonth() + 1).padStart(2, '0');
+          const day = String(now.getDate()).padStart(2, '0');
+          const hour = String(now.getHours()).padStart(2, '0');
+          const minutes = String(now.getMinutes()).padStart(2, '0');
 
-// חישוב שעת חזרה (שעת יציאה + שעה)
-const returnTime = new Date(now.getTime() + 60 * 60 * 1000);
-const returnHour = String(returnTime.getHours()).padStart(2, '0');
-const returnMinutes = String(returnTime.getMinutes()).padStart(2, '0');
+          // חישוב שעת חזרה (שעת יציאה + שעה)
+          const returnTime = new Date(now.getTime() + 60 * 60 * 1000);
+          const returnHour = String(returnTime.getHours()).padStart(2, '0');
+          const returnMinutes = String(returnTime.getMinutes()).padStart(2, '0');
 
-document.getElementById('student-name-display').textContent = שם התלמיד: ${name};
-document.getElementById('student-class-display').textContent = כיתה: ${className};
-document.getElementById('current-date').textContent = תאריך: ${day}/${month}/${year};
-document.getElementById('release-time').textContent = שעת השחרור: ${hour}:${minutes};
-document.getElementById('exit-time').textContent = שעת יציאה: ${hour}:${minutes};
-document.getElementById('return-time').textContent = שעת חזרה: ${returnHour}:${returnMinutes};
-
+          document.getElementById('student-name-display').textContent = `שם התלמיד: ${name}`;
+          document.getElementById('student-class-display').textContent = `כיתה: ${className}`;
+          document.getElementById('current-date').textContent = `תאריך: ${day}/${month}/${year}`;
+          document.getElementById('release-time').textContent = `שעת השחרור: ${hour}:${minutes}`;
+          document.getElementById('exit-time').textContent = `שעת יציאה: ${hour}:${minutes}`;
+          document.getElementById('return-time').textContent = `שעת חזרה: ${returnHour}:${returnMinutes}`;
 
           formContainer.style.display = 'none';
           mainContent.style.display = 'block';
