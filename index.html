@@ -55,13 +55,21 @@
     }
 
     .details {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin: 10px 0;
-      font-size: 16px;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    margin: 10px 0;
+    font-size: 16px;
+}
 
+.details .label {
+    text-align: right;
+    font-weight: bold;
+}
+
+.details .value {
+    text-align: left;
+}
     .details h2 {
       margin: 0;
       font-size: 16px;
