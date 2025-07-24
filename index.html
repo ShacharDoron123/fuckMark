@@ -21,7 +21,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       width: 90%;
       box-sizing: border-box;
-      position: relative; /* מאפשר למקם את האייקונים בפינות */
+      position: relative; /* מאפשר מיקום יחסי לאייקונים */
     }
 
     .content {
@@ -29,17 +29,17 @@
       margin: 0 auto;
       padding: 10px 15px;
       box-sizing: border-box;
-      position: relative;
     }
 
-    /* הדגל + השפה בפינה שמאלית עליונה */
+    /* הדגל והטקסט בפינה שמאלית עליונה */
     .language-box {
       display: flex;
       align-items: center;
       gap: 5px;
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 0;   /* ממש צמוד לקצה העליון */
+      left: 0;  /* ממש צמוד לקצה השמאלי */
+      padding: 5px; /* קצת מרווח פנימי שלא יהיה צמוד מדי */
     }
 
     .language-box img {
@@ -55,10 +55,11 @@
     /* הבית בפינה ימנית עליונה */
     .home-icon {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 0;    /* ממש צמוד לקצה העליון */
+      right: 0;  /* ממש צמוד לקצה הימני */
       height: 24px;
       width: auto;
+      padding: 5px; /* קצת מרווח פנימי */
     }
 
     .h1h{
@@ -71,7 +72,7 @@
       white-space: nowrap;
       grid-template-columns: 1fr 1fr;
       gap: 10px 20px;
-      margin: 50px 0 10px 0; /* נותן מרווח כי האייקונים עליונים */
+      margin: 50px 0 10px 0; /* מקום לאייקונים העליונים */
       font-size: 16px;
       font-weight: bold; 
     }
