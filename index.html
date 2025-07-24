@@ -21,6 +21,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       width: 90%;
       box-sizing: border-box;
+      position: relative; /* מאפשר למקם את האייקונים בפינות */
     }
 
     .content {
@@ -28,23 +29,35 @@
       margin: 0 auto;
       padding: 10px 15px;
       box-sizing: border-box;
+      position: relative;
     }
 
-    /* כותרת עם דגל משמאל ובית מימין */
-    .header {
+    /* הדגל + השפה בפינה שמאלית עליונה */
+    .language-box {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 25px;
+      gap: 5px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
     }
 
-    .header .flag {
-      height: 24px; /* קטן יותר */
+    .language-box img {
+      height: 24px;
       width: auto;
     }
 
-    .header .home {
-      height: 24px; /* קטן יותר */
+    .language-box h2 {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* הבית בפינה ימנית עליונה */
+    .home-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      height: 24px;
       width: auto;
     }
 
@@ -53,18 +66,12 @@
       font-size: 15px; 
     }
 
-    .header h2 {
-      font-size: 16px;
-      font-weight: bold; 
-      margin: 0;
-    }
-
     .details {
       display: grid;
       white-space: nowrap;
       grid-template-columns: 1fr 1fr;
       gap: 10px 20px;
-      margin: 10px 0;
+      margin: 50px 0 10px 0; /* נותן מרווח כי האייקונים עליונים */
       font-size: 16px;
       font-weight: bold; 
     }
@@ -181,11 +188,15 @@
 
   <div id="main-content" class="approval-container" style="display: none;">
     <div class="content">
-      <div class="header">
-        <img class="flag" src="./flag.png" alt="Language">
+      
+      <!-- הדגל והטקסט בפינה -->
+      <div class="language-box">
+        <img src="./flag.png" alt="Language">
         <h2>:שפה</h2>
-        <img class="home" src="./home.png" alt="Home">
       </div>
+
+      <!-- הבית בפינה -->
+      <img class="home-icon" src="./home.png" alt="Home">
 
       <h1 class="h1h">הדפסת אישור יציאה</h1>
 
