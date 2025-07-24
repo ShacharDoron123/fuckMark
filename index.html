@@ -86,7 +86,6 @@
       font-weight: bold;
       white-space: nowrap;
       overflow: visible;
-      /* text-overflow: ellipsis; <-- הסרנו שורה זו */
     }
 
     #student-name-display {
@@ -160,8 +159,9 @@
       #student-name-display {
         right: 0;
         width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        overflow: visible;
+        text-overflow: clip;
+        white-space: nowrap;
       }
     }
   </style>
