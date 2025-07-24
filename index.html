@@ -89,15 +89,13 @@
     }
 
     #student-name-display {
-      grid-column: 2;
-      position: relative;
-      right: calc(50% + var(--col-gap));
-      width: calc(100% + 50% + var(--col-gap));
-      white-space: nowrap;
+      grid-column: 1 / -1;
+      width: 100%;
+      direction: ltr;
+      text-align: left;
+      white-space: normal;
       overflow: visible;
       text-overflow: clip;
-      direction: rtl;
-      text-align: right;
     }
 
     .status {
@@ -157,11 +155,13 @@
 
     @media (max-width: 500px) {
       #student-name-display {
-        right: 0;
+        grid-column: 1 / -1;
         width: 100%;
+        direction: ltr;
+        text-align: left;
+        white-space: normal;
         overflow: visible;
         text-overflow: clip;
-        white-space: nowrap;
       }
     }
   </style>
