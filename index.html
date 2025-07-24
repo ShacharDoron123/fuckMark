@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exit Approval</title>
   <style>
-    :root{
+    :root {
       --col-gap: 20px;
     }
 
@@ -85,18 +85,30 @@
       font-size: 14px;
       font-weight: bold;
       white-space: nowrap;
-      overflow: visible;
     }
 
-   #student-name-display {
-  grid-column: 1 / -1;
-  width: max-content;
-  direction: rtl;
-  text-align: right;
-  white-space: nowrap;
-  overflow: visible;
-  text-overflow: unset;
-}
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      direction: rtl;
+      white-space: nowrap;
+      overflow: hidden;
+      gap: 10px;
+    }
+
+    .student-name {
+      flex-grow: 1;
+      overflow: visible;
+      text-align: right;
+      text-overflow: ellipsis;
+    }
+
+    .student-class {
+      flex-shrink: 0;
+      white-space: nowrap;
+      text-align: left;
+    }
 
     .status {
       background-color: #028851;
@@ -152,18 +164,16 @@
       border-radius: 6px;
       box-sizing: border-box;
     }
-@media (max-width: 500px) {
-  #student-name-display {
-    grid-column: 1 / -1;
-    width: max-content;
-    direction: rtl;
-    text-align: right;
-    white-space: nowrap;
-    overflow: visible;
-    text-overflow: unset;
-  }
-}
 
+    @media (max-width: 500px) {
+      .details-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .student-class {
+        align-self: flex-end;
+      }
     }
   </style>
 </head>
@@ -214,8 +224,13 @@
       <div class="details">
         <h2 id="release-time">שעת השחרור:</h2>
         <h2 id="current-date">תאריך:</h2>
-        <h2 id="student-class-display">כיתה:</h2>
-        <h2 id="student-name-display">שם התלמיד:</h2>
+
+        <!-- שורה עם שם תלמיד וכיתה באותו קו -->
+        <div class="details-row">
+          <h2 class="student-name" id="student-name-display">שם התלמיד:</h2>
+          <h2 class="student-class" id="student-class-display">כיתה:</h2>
+        </div>
+
         <h2><span class="status">אושר</span>:סטטוס</h2>
         <h2>סיבה: חלון</h2>
         <h2>מחזוריות: חד פעמי</h2>
