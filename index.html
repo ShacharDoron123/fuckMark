@@ -31,16 +31,17 @@
       box-sizing: border-box;
     }
 
-    .language-box {
-      display: flex;
+   .language-box {
+  display: flex;
   align-items: center;
   gap: 5px;
-  flex-direction: row-reverse; /* הפוך את הכיוון */
   position: absolute;
   top: 0;
-  right: 0; /* הצמד לימין */
+  left: 0;  /* השאר בצד שמאל */
   padding: 5px;
-    }
+  flex-direction: row;  /* סדר רגיל: טקסט קודם ואז דגל */
+}
+
 
     .language-box img {
       height: 24px;
