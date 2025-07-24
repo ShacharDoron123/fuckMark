@@ -30,6 +30,7 @@
       box-sizing: border-box;
     }
 
+    /* כותרת עם דגל משמאל ובית מימין */
     .header {
       display: flex;
       justify-content: space-between;
@@ -37,18 +38,19 @@
       margin-bottom: 25px;
     }
 
-    .header .language {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .header .flag {
+      height: 24px; /* קטן יותר */
+      width: auto;
     }
 
-    .header .language img {
-      height: 30px;
+    .header .home {
+      height: 24px; /* קטן יותר */
+      width: auto;
     }
+
     .h1h{
       text-align: center;
-       font-size: 15px; 
+      font-size: 15px; 
     }
 
     .header h2 {
@@ -180,14 +182,11 @@
   <div id="main-content" class="approval-container" style="display: none;">
     <div class="content">
       <div class="header">
-        <div class="language">
-
-          <img src="./flag.png" alt="Language">
-          <h2>:שפה</h2>
-        </div>
-
-        <img width="40" height="40" src="./home.png" alt="Home">
+        <img class="flag" src="./flag.png" alt="Language">
+        <h2>:שפה</h2>
+        <img class="home" src="./home.png" alt="Home">
       </div>
+
       <h1 class="h1h">הדפסת אישור יציאה</h1>
 
       <div class="details">
@@ -207,7 +206,6 @@
       </div>
 
       <div class="approval">
-
         <img src="./checkmarkA.png" alt="Approved" style="width:150%; height:auto;">
         <h2>אושר על ידי: מחנכת כיתה</h2>
       </div>
@@ -215,66 +213,62 @@
   </div>
 
   <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const CLASS = "3";
+    document.addEventListener("DOMContentLoaded", function () {
+      const CLASS = "3";
 
-  const clockContainer = document.getElementById('clock-container');
-  const formContainer = document.getElementById('form-container');
-  const mainContent = document.getElementById('main-content');
-  const clockInput = document.getElementById('clock-input');
-  const clockSubmit = document.getElementById('clock-submit');
-  const errorMsg = document.getElementById('error-msg');
+      const clockContainer = document.getElementById('clock-container');
+      const formContainer = document.getElementById('form-container');
+      const mainContent = document.getElementById('main-content');
+      const clockInput = document.getElementById('clock-input');
+      const clockSubmit = document.getElementById('clock-submit');
+      const errorMsg = document.getElementById('error-msg');
 
-  clockSubmit.addEventListener('click', function () {
-    const enteredCode = clockInput.value.trim();
-    if (enteredCode === CLASS) {
-      clockContainer.style.display = 'none';
-      formContainer.style.display = 'block';
-      errorMsg.style.display = 'none';
-      clockInput.value = '';
-    } else {
-      errorMsg.style.display = 'block';
-      clockInput.value = '';
-      clockInput.focus();
-    }
-  });
+      clockSubmit.addEventListener('click', function () {
+        const enteredCode = clockInput.value.trim();
+        if (enteredCode === CLASS) {
+          clockContainer.style.display = 'none';
+          formContainer.style.display = 'block';
+          errorMsg.style.display = 'none';
+          clockInput.value = '';
+        } else {
+          errorMsg.style.display = 'block';
+          clockInput.value = '';
+          clockInput.focus();
+        }
+      });
 
-  clockInput.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      clockSubmit.click();
-    }
-  });
+      clockInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          clockSubmit.click();
+        }
+      });
 
-  const form = document.getElementById('student-form');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+      const form = document.getElementById('student-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    const name = document.getElementById('student-name').value.trim();
-    const className = document.getElementById('student-class').value.trim();
+        const name = document.getElementById('student-name').value.trim();
+        const className = document.getElementById('student-class').value.trim();
 
-    if (name && className) {
-      const now = new Date();
-      const year = now.getFullYear().toString().slice(2);
-      const month = String(now.getMonth() + 1).padStart(2, '0');
-      const day = String(now.getDate()).padStart(2, '0');
-      const hour = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
+        if (name && className) {
+          const now = new Date();
+          const year = now.getFullYear().toString().slice(2);
+          const month = String(now.getMonth() + 1).padStart(2, '0');
+          const day = String(now.getDate()).padStart(2, '0');
+          const hour = String(now.getHours()).padStart(2, '0');
+          const minutes = String(now.getMinutes()).padStart(2, '0');
 
-     
+          document.getElementById('student-name-display').textContent = `שם התלמיד: ${name}`;
+          document.getElementById('student-class-display').textContent = `כיתה: ${className}`;
+          document.getElementById('current-date').textContent = `תאריך: ${day}/${month}/${year}`;
+          document.getElementById('release-time').textContent = `שעת השחרור: ${hour}:${minutes}`;
 
-      document.getElementById('student-name-display').textContent = `שם התלמיד: ${name}`;
-      document.getElementById('student-class-display').textContent = `כיתה: ${className}`;
-      document.getElementById('current-date').textContent = `תאריך: ${day}/${month}/${year}`;
-      document.getElementById('release-time').textContent = `שעת השחרור: ${hour}:${minutes}`;
-
-      formContainer.style.display = 'none';
-      mainContent.style.display = 'block';
-    }
-  });
-});
-</script>
-
-
+          formContainer.style.display = 'none';
+          mainContent.style.display = 'block';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
