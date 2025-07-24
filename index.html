@@ -6,7 +6,7 @@
   <title>Exit Approval</title>
   <style>
     :root{
-      --col-gap: 20px; /* אותו gap כמו ב-.details */
+      --col-gap: 20px;
     }
 
     body {
@@ -69,7 +69,6 @@
       font-size: 15px;
     }
 
-    /* משאירים שתי עמודות בדיוק כמו קודם */
     .details {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -78,28 +77,25 @@
       margin: 50px 0 10px 0;
       font-size: 16px;
       font-weight: bold;
-      position: relative; /* כדי ששם התלמיד יוכל "לגלוש" בתוך המרחב */
+      position: relative;
     }
 
     .details h2 {
       margin: 0;
       font-size: 14px;
       font-weight: bold;
-      white-space: nowrap; /* שלא ירד שורה */
-      overflow: visible ;     /* אפשר לשנות ל-visible אם אתה רוצה שלא ייחתך בכלל */
-      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: visible;
+      /* text-overflow: ellipsis; <-- הסרנו שורה זו */
     }
 
-    /* כאן הקסם: משאירים את התא בעמודה שלו (השנייה),
-       אבל מזיזים אותו שמאלה ברוחב עמודה אחת + המרווח,
-       ומגדילים לו את הרוחב כך שיוכל "לאכול" גם את העמודה השמאלית. */
     #student-name-display {
-      grid-column: 2;            /* נשאר בעמודה שלו */
+      grid-column: 2;
       position: relative;
       right: calc(50% + var(--col-gap));
       width: calc(100% + 50% + var(--col-gap));
       white-space: nowrap;
-      overflow: visible;         /* שיצא החוצה אם צריך */
+      overflow: visible;
       text-overflow: clip;
       direction: rtl;
       text-align: right;
@@ -161,7 +157,6 @@
     }
 
     @media (max-width: 500px) {
-      /* במסך קטן נחזיר פשוט שתי עמודות רגילות – שם ארוך כבר לא יוכל לגלוש */
       #student-name-display {
         right: 0;
         width: 100%;
