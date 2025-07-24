@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exit Approval</title>
   <style>
-    :root {
-      --col-gap: 20px;
-    }
-
     body {
       background-color: #2844a4;
       margin: 0;
@@ -70,14 +66,12 @@
     }
 
     .details {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px var(--col-gap);
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       margin: 50px 0 10px 0;
       font-size: 16px;
       font-weight: bold;
-      position: relative;
     }
 
     .details h2 {
@@ -92,22 +86,20 @@
       justify-content: space-between;
       align-items: center;
       direction: rtl;
-      white-space: nowrap;
-      overflow: hidden;
-      gap: 10px;
+      width: 100%;
     }
 
     .student-name {
       flex-grow: 1;
-      overflow: visible;
       text-align: right;
-      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: visible;
     }
 
     .student-class {
       flex-shrink: 0;
       white-space: nowrap;
-      text-align: left;
+      margin-right: 10px;
     }
 
     .status {
@@ -164,21 +156,11 @@
       border-radius: 6px;
       box-sizing: border-box;
     }
-
-    @media (max-width: 500px) {
-      .details-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .student-class {
-        align-self: flex-end;
-      }
-    }
   </style>
 </head>
 <body>
 
+  <!-- שלב 1: הזנת קוד -->
   <div id="clock-container" class="approval-container" style="max-width: 400px; text-align: center;">
     <div class="content">
       <h1>הכנס קוד כדי להמשיך</h1>
@@ -190,6 +172,7 @@
     </div>
   </div>
 
+  <!-- שלב 2: הזנת פרטי תלמיד -->
   <div id="form-container" class="approval-container" style="display: none;">
     <div class="content">
       <h1 style="text-align: center;">הכנס פרטי תלמיד</h1>
@@ -209,6 +192,7 @@
     </div>
   </div>
 
+  <!-- שלב 3: התוצאה -->
   <div id="main-content" class="approval-container" style="display: none;">
     <div class="content">
 
@@ -225,7 +209,7 @@
         <h2 id="release-time">שעת השחרור:</h2>
         <h2 id="current-date">תאריך:</h2>
 
-        <!-- שורה עם שם תלמיד וכיתה באותו קו -->
+        <!-- שם וכיתה על אותו שורה -->
         <div class="details-row">
           <h2 class="student-name" id="student-name-display">שם התלמיד:</h2>
           <h2 class="student-class" id="student-class-display">כיתה:</h2>
@@ -251,7 +235,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const CLASS = "3";
+      const CLASS_CODE = "3"; // הקוד הדרוש למעבר לשלב הבא
 
       const clockContainer = document.getElementById('clock-container');
       const formContainer = document.getElementById('form-container');
@@ -260,9 +244,10 @@
       const clockSubmit = document.getElementById('clock-submit');
       const errorMsg = document.getElementById('error-msg');
 
+      // בדיקת קוד
       clockSubmit.addEventListener('click', function () {
         const enteredCode = clockInput.value.trim();
-        if (enteredCode === CLASS) {
+        if (enteredCode === CLASS_CODE) {
           clockContainer.style.display = 'none';
           formContainer.style.display = 'block';
           errorMsg.style.display = 'none';
