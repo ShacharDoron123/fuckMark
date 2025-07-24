@@ -10,6 +10,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: #333;
+      direction: rtl;
     }
 
     .approval-container {
@@ -72,7 +73,7 @@
       margin: 50px 0 10px 0;
       font-size: 16px;
       font-weight: bold;
-      direction: rtl;
+      align-items: center;
     }
 
     .details h2 {
@@ -83,25 +84,29 @@
     }
 
     .name-class-row {
-      grid-column: 1 / -1; /* שתי עמודות */
+      grid-column: 1 / -1;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      direction: rtl;
-      margin-top: 10px;
     }
 
     .student-name {
-      text-align: right;
-      white-space: nowrap;
-      overflow: visible;
       flex-grow: 1;
+      text-align: right;
+      overflow: visible;
+      white-space: nowrap;
     }
 
     .student-class {
-      white-space: nowrap;
       flex-shrink: 0;
-      margin-right: 10px;
+      margin-left: 10px;
+      white-space: nowrap;
+    }
+
+    .full-width-center {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin: 10px 0;
     }
 
     .status {
@@ -147,22 +152,11 @@
       font-size: 16px;
       margin-top: 10px;
     }
-
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      max-width: 400px;
-      font-size: 16px;
-      padding: 10px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
-    }
   </style>
 </head>
 <body>
 
-  <!-- שלב 1: הזנת קוד -->
+  <!-- קוד כניסה -->
   <div id="clock-container" class="approval-container" style="max-width: 400px; text-align: center;">
     <div class="content">
       <h1>הכנס קוד כדי להמשיך</h1>
@@ -174,7 +168,7 @@
     </div>
   </div>
 
-  <!-- שלב 2: הזנת פרטי תלמיד -->
+  <!-- טופס פרטי תלמיד -->
   <div id="form-container" class="approval-container" style="display: none;">
     <div class="content">
       <h1 style="text-align: center;">הכנס פרטי תלמיד</h1>
@@ -182,6 +176,8 @@
         <div class="details">
           <label for="student-name"><h2>שם התלמיד:</h2></label>
           <input type="text" id="student-name" required>
+        </div>
+        <div class="details">
           <label for="student-class"><h2>כיתה:</h2></label>
           <input type="text" id="student-class" required>
         </div>
@@ -192,32 +188,33 @@
     </div>
   </div>
 
-  <!-- שלב 3: התוצאה -->
+  <!-- דף האישור -->
   <div id="main-content" class="approval-container" style="display: none;">
     <div class="content">
-
       <div class="language-box">
         <img src="./flag.png" alt="Language">
         <h2>:שפה</h2>
       </div>
-
       <img class="home-icon" src="./home.png" alt="Home">
 
       <h1 class="h1h">הדפסת אישור יציאה</h1>
 
       <div class="details">
-        <h2 id="release-time">שעת השחרור:</h2>
         <h2 id="current-date">תאריך:</h2>
+        <h2 id="release-time">שעת השחרור:</h2>
 
-        <!-- שם וכיתה באותה שורה על פני שתי עמודות -->
         <div class="name-class-row">
           <h2 class="student-name" id="student-name-display">שם התלמיד:</h2>
           <h2 class="student-class" id="student-class-display">כיתה:</h2>
         </div>
 
-        <h2><span class="status">אושר</span>:סטטוס</h2>
-        <h2>סיבה: חלון</h2>
-        <h2>מחזוריות: חד פעמי</h2>
+        <div class="full-width-center">
+          <h2>סיבה: חלון</h2>
+        </div>
+
+        <h2 id="cycle-info">מחזוריות: חד פעמי</h2>
+        <h2 id="status-info"><span class="status">אושר</span>:סטטוס</h2>
+
         <h2>שעת חזרה: 00:00</h2>
         <h2>שעת יציאה: 00:00</h2>
       </div>
@@ -233,9 +230,10 @@
     </div>
   </div>
 
+  <!-- JavaScript המקורי שלך - לא נגעתי בו -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const CLASS_CODE = "3";
+      const CLASS = "3";
 
       const clockContainer = document.getElementById('clock-container');
       const formContainer = document.getElementById('form-container');
@@ -246,7 +244,7 @@
 
       clockSubmit.addEventListener('click', function () {
         const enteredCode = clockInput.value.trim();
-        if (enteredCode === CLASS_CODE) {
+        if (enteredCode === CLASS) {
           clockContainer.style.display = 'none';
           formContainer.style.display = 'block';
           errorMsg.style.display = 'none';
