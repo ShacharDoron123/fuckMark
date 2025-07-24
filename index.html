@@ -21,7 +21,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       width: 90%;
       box-sizing: border-box;
-      position: relative; /* מאפשר מיקום יחסי לאייקונים */
+      position: relative;
     }
 
     .content {
@@ -31,15 +31,14 @@
       box-sizing: border-box;
     }
 
-    /* הדגל והטקסט בפינה שמאלית עליונה */
     .language-box {
       display: flex;
       align-items: center;
       gap: 5px;
       position: absolute;
-      top: 0;   /* ממש צמוד לקצה העליון */
-      left: 0;  /* ממש צמוד לקצה השמאלי */
-      padding: 5px; /* קצת מרווח פנימי שלא יהיה צמוד מדי */
+      top: 0;
+      left: 0;
+      padding: 5px;
     }
 
     .language-box img {
@@ -52,44 +51,45 @@
       margin: 0;
     }
 
-    /* הבית בפינה ימנית עליונה */
     .home-icon {
       position: absolute;
-      top: 0;    /* ממש צמוד לקצה העליון */
-      right: 0;  /* ממש צמוד לקצה הימני */
+      top: 0;
+      right: 0;
       height: 24px;
       width: auto;
-      padding: 5px; /* קצת מרווח פנימי */
+      padding: 5px;
     }
 
-    .h1h{
+    .h1h {
       text-align: center;
-      font-size: 15px; 
+      font-size: 15px;
     }
 
     .details {
       display: grid;
-      white-space: nowrap;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: auto 1fr;
       gap: 10px 20px;
-      margin: 50px 0 10px 0; /* מקום לאייקונים העליונים */
+      align-items: start;
+      margin: 50px 0 10px 0;
       font-size: 16px;
-      font-weight: bold; 
+      font-weight: bold;
     }
 
     .details h2 {
       margin: 0;
       font-size: 14px;
-      font-weight: bold; 
+      font-weight: bold;
+      white-space: normal;
+      word-break: break-word;
     }
 
-    /* התוספת החשובה: שם וכיתה שיתרחבו שמאלה */
     #student-name-display,
     #student-class-display {
       display: inline-block;
       direction: rtl;
       text-align: right;
-      white-space: nowrap;
+      white-space: normal;
+      word-break: break-word;
     }
 
     .status {
@@ -198,14 +198,12 @@
 
   <div id="main-content" class="approval-container" style="display: none;">
     <div class="content">
-      
-      <!-- הדגל והטקסט בפינה -->
+
       <div class="language-box">
         <img src="./flag.png" alt="Language">
         <h2>:שפה</h2>
       </div>
 
-      <!-- הבית בפינה -->
       <img class="home-icon" src="./home.png" alt="Home">
 
       <h1 class="h1h">הדפסת אישור יציאה</h1>
