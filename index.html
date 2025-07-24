@@ -67,29 +67,31 @@
 
     .details {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 10px 20px;
       align-items: start;
       margin: 50px 0 10px 0;
       font-size: 16px;
       font-weight: bold;
+      direction: rtl;
     }
 
     .details h2 {
       margin: 0;
       font-size: 14px;
       font-weight: bold;
-      white-space: normal;
-      word-break: break-word;
+      white-space: nowrap;
+      overflow: visible;
+      text-overflow: unset;
     }
 
     #student-name-display,
     #student-class-display {
-      display: inline-block;
+      display: block;
       direction: rtl;
       text-align: right;
-      white-space: normal;
-      word-break: break-word;
+      white-space: nowrap;
+      overflow: visible;
     }
 
     .status {
