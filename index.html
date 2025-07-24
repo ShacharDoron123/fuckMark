@@ -284,10 +284,10 @@
           const hour = String(now.getHours()).padStart(2, '0');
           const minutes = String(now.getMinutes()).padStart(2, '0');
 
-          document.getElementById('student-name-display').textContent = שם התלמיד: ${name};
-          document.getElementById('student-class-display').textContent = כיתה: ${className};
-          document.getElementById('current-date').textContent = תאריך: ${day}/${month}/${year};
-          document.getElementById('release-time').textContent = שעת השחרור: ${hour}:${minutes};
+         document.getElementById('student-name-display').textContent = `שם התלמיד: ${name}`;
+document.getElementById('student-class-display').textContent = `כיתה: ${className}`;
+document.getElementById('current-date').textContent = `תאריך: ${day}/${month}/${year}`;
+document.getElementById('release-time').textContent = `שעת השחרור: ${hour}:${minutes}`;
 
           formContainer.style.display = 'none';
           mainContent.style.display = 'block';
