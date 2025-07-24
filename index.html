@@ -66,12 +66,13 @@
     }
 
     .details {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
       margin: 50px 0 10px 0;
       font-size: 16px;
       font-weight: bold;
+      direction: rtl;
     }
 
     .details h2 {
@@ -81,24 +82,25 @@
       white-space: nowrap;
     }
 
-    .details-row {
+    .name-class-row {
+      grid-column: 1 / -1; /* שתי עמודות */
       display: flex;
       justify-content: space-between;
       align-items: center;
       direction: rtl;
-      width: 100%;
+      margin-top: 10px;
     }
 
     .student-name {
-      flex-grow: 1;
       text-align: right;
       white-space: nowrap;
       overflow: visible;
+      flex-grow: 1;
     }
 
     .student-class {
-      flex-shrink: 0;
       white-space: nowrap;
+      flex-shrink: 0;
       margin-right: 10px;
     }
 
@@ -180,8 +182,6 @@
         <div class="details">
           <label for="student-name"><h2>שם התלמיד:</h2></label>
           <input type="text" id="student-name" required>
-        </div>
-        <div class="details">
           <label for="student-class"><h2>כיתה:</h2></label>
           <input type="text" id="student-class" required>
         </div>
@@ -209,8 +209,8 @@
         <h2 id="release-time">שעת השחרור:</h2>
         <h2 id="current-date">תאריך:</h2>
 
-        <!-- שם וכיתה על אותו שורה -->
-        <div class="details-row">
+        <!-- שם וכיתה באותה שורה על פני שתי עמודות -->
+        <div class="name-class-row">
           <h2 class="student-name" id="student-name-display">שם התלמיד:</h2>
           <h2 class="student-class" id="student-class-display">כיתה:</h2>
         </div>
@@ -235,7 +235,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const CLASS_CODE = "3"; // הקוד הדרוש למעבר לשלב הבא
+      const CLASS_CODE = "3";
 
       const clockContainer = document.getElementById('clock-container');
       const formContainer = document.getElementById('form-container');
@@ -244,7 +244,6 @@
       const clockSubmit = document.getElementById('clock-submit');
       const errorMsg = document.getElementById('error-msg');
 
-      // בדיקת קוד
       clockSubmit.addEventListener('click', function () {
         const enteredCode = clockInput.value.trim();
         if (enteredCode === CLASS_CODE) {
