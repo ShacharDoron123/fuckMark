@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exit Approval</title>
   <style>
+    :root{
+      --col-gap: 20px; /* אותו gap כמו ב-.details */
+    }
+
     body {
       background-color: #2844a4;
       margin: 0;
@@ -65,33 +69,40 @@
       font-size: 15px;
     }
 
+    /* משאירים שתי עמודות בדיוק כמו קודם */
     .details {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px 20px;
+      gap: 10px var(--col-gap);
       align-items: start;
       margin: 50px 0 10px 0;
       font-size: 16px;
       font-weight: bold;
-      direction: rtl;
+      position: relative; /* כדי ששם התלמיד יוכל "לגלוש" בתוך המרחב */
     }
 
     .details h2 {
       margin: 0;
       font-size: 14px;
       font-weight: bold;
-      white-space: nowrap;
-      overflow: visible;
-      text-overflow: unset;
+      white-space: nowrap; /* שלא ירד שורה */
+      overflow: hidden;     /* אפשר לשנות ל-visible אם אתה רוצה שלא ייחתך בכלל */
+      text-overflow: ellipsis;
     }
 
-    #student-name-display,
-    #student-class-display {
-      display: block;
+    /* כאן הקסם: משאירים את התא בעמודה שלו (השנייה),
+       אבל מזיזים אותו שמאלה ברוחב עמודה אחת + המרווח,
+       ומגדילים לו את הרוחב כך שיוכל "לאכול" גם את העמודה השמאלית. */
+    #student-name-display {
+      grid-column: 2;            /* נשאר בעמודה שלו */
+      position: relative;
+      right: calc(50% + var(--col-gap));
+      width: calc(100% + 50% + var(--col-gap));
+      white-space: nowrap;
+      overflow: visible;         /* שיצא החוצה אם צריך */
+      text-overflow: clip;
       direction: rtl;
       text-align: right;
-      white-space: nowrap;
-      overflow: visible;
     }
 
     .status {
@@ -150,18 +161,12 @@
     }
 
     @media (max-width: 500px) {
-      .details {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px 12px;
-      }
-
-      .cta button {
-        font-size: 16px;
-        padding: 10px;
-      }
-
-      .approval-container {
-        padding: 20px;
+      /* במסך קטן נחזיר פשוט שתי עמודות רגילות – שם ארוך כבר לא יוכל לגלוש */
+      #student-name-display {
+        right: 0;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   </style>
