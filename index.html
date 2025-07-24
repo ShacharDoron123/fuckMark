@@ -50,6 +50,7 @@
     .language-box h2 {
       font-size: 14px;
       margin: 0;
+      font-weight: bold;
     }
 
     .home-icon {
@@ -63,7 +64,8 @@
 
     .h1h {
       text-align: center;
-      font-size: 15px;
+      font-size: 18px;
+      font-weight: bold;
     }
 
     .details {
@@ -71,22 +73,15 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px 20px;
       margin: 50px 0 10px 0;
-      font-size: 16px;
-      font-weight: bold;
       align-items: center;
+      font-weight: bold;
+      font-size: 18px;
     }
 
     .details h2 {
       margin: 0;
-      font-size: 14px;
-      font-weight: bold;
       white-space: nowrap;
     }
-#status-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
     .name-class-row {
       grid-column: 1 / -1;
@@ -114,13 +109,23 @@
       margin: 10px 0;
     }
 
+    #status-info {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      grid-column: 1 / -1;
+      gap: 5px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
     .status {
       background-color: #028851;
       color: white;
-      padding: 5px 12px;
+      padding: 3px 10px;
       border-radius: 8px;
       font-size: 14px;
-      display: inline-block;
+      margin-right: 5px;
     }
 
     .cta {
@@ -143,19 +148,20 @@
 
     .approval {
       text-align: center;
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     .approval img {
       max-width: 100%;
       width: 120px;
       height: auto;
-      margin: 10px 0;
+      margin: 5px 0;
     }
 
     .approval h2 {
       font-size: 16px;
-      margin-top: 10px;
+      margin-top: 5px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -218,25 +224,28 @@
         </div>
 
         <h2 id="cycle-info">מחזוריות: חד פעמי</h2>
-       <h2 id="status-info">סטטוס: <span class="status">אושר</span></h2>
-
+        
+        <div id="status-info">
+          <span>סטטוס:</span>
+          <span class="status">אושר</span>
+        </div>
 
         <h2>שעת חזרה: 00:00</h2>
         <h2>שעת יציאה: 00:00</h2>
       </div>
 
       <div class="cta">
-       <button>‎עדכון יציאה מבית הספר!</button>
+        <button>עדכון יציאה מבית הספר!</button>
       </div>
 
       <div class="approval">
-        <img src="./checkmarkA.png" alt="Approved" style="width:150%; height:auto;">
+        <img src="./checkmarkA.png" alt="Approved">
         <h2>אושר על ידי: מחנכת כיתה</h2>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript המקורי שלך - לא נגעתי בו -->
+  <!-- JavaScript המקורי שלך - לא שונה -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const CLASS = "3";
