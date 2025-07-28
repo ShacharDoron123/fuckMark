@@ -159,7 +159,6 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // --- מערך משתמשים (חדש)
       const USERS = [
         { username: "admin", code: "1234" },
         { username: "teacher", code: "9999" }
@@ -173,19 +172,12 @@
       const clockSubmit = document.getElementById('clock-submit');
       const errorMsg = document.getElementById('error-msg');
 
-      // אם המשתמש כבר התחבר
-      if (sessionStorage.getItem("loggedIn") === "true") {
-        clockContainer.style.display = 'none';
-        formContainer.style.display = 'block';
-      }
-
       clockSubmit.addEventListener('click', function () {
         const username = usernameInput.value.trim();
         const enteredCode = clockInput.value.trim();
 
         const user = USERS.find(u => u.username === username && u.code === enteredCode);
         if (user) {
-          sessionStorage.setItem("loggedIn", "true");
           clockContainer.style.display = 'none';
           formContainer.style.display = 'block';
           errorMsg.style.display = 'none';
